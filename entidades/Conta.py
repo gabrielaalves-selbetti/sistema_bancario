@@ -27,7 +27,7 @@ class Conta(ABC):
     
     def depositar(self, valor: float):
         if valor > 0:
-            self.saldo += valor
+            self._saldo += valor
             self._historico.append((datetime.now(), f'Depósito no valor de R${valor:.2f}'))
             print(f'Depósito no valor de R${valor:.2f} realizado com sucesso!')
         
@@ -61,6 +61,7 @@ class ContaCorrente(Conta):
     def sacar(self, valor: float):
         if valor <= 0:
             print('Valor do saque inválido.')
+            return
         
         saldo_disponivel = self._saldo + self.limite
 
