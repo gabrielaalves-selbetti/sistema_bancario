@@ -6,3 +6,10 @@ class SaldoInsuficienteError(Exception):
         self.mensagem = f"{mensagem} Saldo atual: R$ {saldo_atual:.2f}, Tentativa de saque: R${valor_saque:.2f}"
 
         super().__init__(self.mensagem)
+
+class ContaInexistente(Exception):
+    def __init__(self, numero_conta, mensagem="A conta especificada não foi encontrada"):
+        self.numero_conta = numero_conta
+        self.mensagem = f'{mensagem} Número da conta: {numero_conta}'
+
+        super().__init__(self.mensagem)
